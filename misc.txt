@@ -1,0 +1,28 @@
+Key features
+
+List expenses to view spending history
+Add expenses and save them locally
+Group expenses by category
+Delete expenses to remove incorrect or unnecessary entries
+Manage categories and tags in app settings
+
+Concepts
+
+Dependencies: Install various packages to extend the functionality of your app.
+Models: Create classes that represent the data structure used within the expense management app.
+fromJson and toJson: Use these methods to convert data between JSON format and Dart objects.
+Local storage: Use local storage to persistently save and retrieve expense data locally on the device, even offline.
+Widgets: Use widgets to create dynamic, interactive UI elements.
+
+Technical terms
+
+intl, provider, collection, and localstorage: The packages that have to be installed.
+ChangeNotifier: A class that provides a simple way to manage and notify listeners about changes in an object’s state.
+
+addExpense(), addOrUpdateExpense(), and removeExpense(): Methods used to update expenses.
+
+Expense, ExpenseCategory, and Tag: Classes that help structure the data used throughout the application.
+
+ExpenseProvider: A state management class that uses ChangeNotifier to manage the list of expenses.
+
+_loadExpensesFromStorage(): Method to load expenses from local storage.

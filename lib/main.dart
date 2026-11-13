@@ -1,33 +1,46 @@
-import 'package:expense_manager/models/expense_provider.dart';
-import 'package:expense_manager/views/home_screen.dart';
 import 'package:flutter/material.dart';
+
 import 'package:localstorage/localstorage.dart';
 import 'package:provider/provider.dart';
 
-Future<void> main() async{
+import 'providers/expense_provider.dart';
+import 'screens/category_management_screen.dart';
+import 'screens/home_screen.dart';
+import 'screens/tag_management_screen.dart';
+
+Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await initLocalStorage();
+  print(localStorage);
 
-  runApp(const MyApp());
+  runApp(MyApp(localStorage: localStorage));
 }
 
 class MyApp extends StatelessWidget {
-  const MyApp({super.key});
+  final LocalStorage localStorage;
 
-  // This widget is the root of your application.
+  const MyApp({super.key, required this.localStorage});
+
   @override
   Widget build(BuildContext context) {
-    return ChangeNotifierProvider
-    (
-      create: (_) => ExpenseProvider(),
-      child:   
-      MaterialApp(
-        theme: ThemeData(
-          colorScheme: .fromSeed(seedColor: Colors.deepPurple),
-        ),
-        home: HomeScreen(),
-      )
+
+    return MultiProvider(
+      providers: [
+        ChangeNotifierProvider(create: (_) => ExpenseProvider(localStorage)),
+      ],
+      child: MaterialApp(
+        title: 'Expense Tracker',
+        debugShowCheckedModeBanner: false,
+        initialRoute: '/',
+        routes: {
+          '/': (context) => HomeScreen(), // Main entry point, HomeScreen
+          '/manage_categories': (context) =>
+              CategoryManagementScreen(), // Route for managing categories
+          '/manage_tags': (context) =>
+              TagManagementScreen(), // Route for managing tags
+        },
+        // Removed 'home:' since 'initialRoute' is used to define the home route
+      ),
     );
   }
 }
-

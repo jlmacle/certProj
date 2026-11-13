@@ -1,40 +1,44 @@
-class Expense 
-{
-  final int? id;
-  final String date;
-  final String category;
-  final String tag;
-  final String notes;
-  final String payee;
+class Expense {
+  final String id;
   final double amount;
+  final String categoryId;
+  final String payee;
+  final String note;
+  final DateTime date;
+  final String tag;
 
-  Expense ({this.id, required this.date, required this.category, required this.tag, required this.notes, required this.payee, required this.amount});
+  Expense({
+    required this.id,
+    required this.amount,
+    required this.categoryId,
+    required this.payee,
+    required this.note,
+    required this.date,
+    required this.tag,
+  });
 
-  factory Expense.fromJson(Map<String, dynamic> json)
-  {
-    return Expense
-    (
-      id: json["id"],
-      date: json["date"],
-      category: json["category"],
-      tag: json["tag"],
-      notes: json["notes"],
-      payee: json["payee"],
-      amount: json["amount"],  
+  factory Expense.fromJson(Map<String, dynamic> json) {
+    return Expense(
+      id: "${json['id']}",
+      amount: json['amount'],
+      categoryId: json['categoryId'] ?? "",
+      payee: json['payee'],
+      note: json['note'] ?? "",
+      //date: DateTime.parse(json['date'] ?? DateTime.now()),
+      date: DateTime.now(),
+      tag: json['tag'],
     );
   }
- 
-  Map<String, dynamic> toJson()
-  {
-    return
-    {
-      "id": id,
-      "date": date,
-      "category": category,
-      "tag": tag,
-      "notes": notes,
-      "payee": payee,
-      "amount": amount
+
+  Map<String, dynamic> toJson() {
+    return {
+      'id': id,
+      'amount': amount,
+      'categoryId': categoryId,
+      'payee': payee,
+      'note': note,
+      'date': date.toIso8601String(),
+      'tag': tag,
     };
   }
 

@@ -12,7 +12,6 @@ import 'screens/tag_management_screen.dart';
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await initLocalStorage();
-  print(localStorage);
 
   runApp(MyApp(localStorage: localStorage));
 }

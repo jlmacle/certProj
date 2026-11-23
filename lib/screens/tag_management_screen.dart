@@ -4,6 +4,8 @@ import '../providers/expense_provider.dart';
 import '../widgets/add_tag_dialog.dart';
 
 class TagManagementScreen extends StatelessWidget {
+  const TagManagementScreen({super.key});
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(

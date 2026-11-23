@@ -10,6 +10,8 @@ import '../models/expense.dart';
 import '../models/expense_category.dart';
 
 class HomeScreen extends StatefulWidget {
+  const HomeScreen({super.key});
+
   @override
   _HomeScreenState createState() => _HomeScreenState();
 }
@@ -124,7 +126,7 @@ class _HomeScreenState extends State<HomeScreen>
                 color: Colors.purple[50],
                 margin: EdgeInsets.symmetric(horizontal: 10, vertical: 12),
                 child: ListTile(
-                  title: Text(expense.payee + " - \$" + expense.amount.toStringAsFixed(2)),
+                  title: Text("${expense.payee} - \$${expense.amount.toStringAsFixed(2)}"),
                   subtitle: Text(
                       "$formattedDate - Category: ${getCategoryNameById(context, expense.categoryId)}"),
                   isThreeLine: true,
@@ -169,7 +171,7 @@ class _HomeScreenState extends State<HomeScreen>
                 Padding(
                   padding: EdgeInsets.all(8.0),
                   child: Text(
-                    categoryName + " - Total: \$" + total.toStringAsFixed(2),
+                    "$categoryName - Total: \$${total.toStringAsFixed(2)}",
                     style: TextStyle(
                       fontSize: 18,
                       fontWeight: FontWeight.bold,
@@ -188,7 +190,7 @@ class _HomeScreenState extends State<HomeScreen>
                     return ListTile(
                       leading:
                           Icon(Icons.monetization_on, color: Colors.deepPurple),
-                      title: Text(expense.payee + " - \$" + expense.amount.toStringAsFixed(2)),
+                      title: Text("${expense.payee} - \$${expense.amount.toStringAsFixed(2)}"),
                       subtitle: Text(DateFormat('MMM dd, yyyy')
                           .format(expense.date)),
                     );

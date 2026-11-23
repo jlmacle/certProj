@@ -6,7 +6,7 @@ import '../providers/expense_provider.dart';
 class AddTagDialog extends StatefulWidget {
   final Function(Tag) onAdd;
 
-  AddTagDialog({required this.onAdd});
+  const AddTagDialog({super.key, required this.onAdd});
 
   @override
   _AddTagDialogState createState() => _AddTagDialogState();

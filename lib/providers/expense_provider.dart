@@ -90,15 +90,7 @@ class ExpenseProvider with ChangeNotifier {
     notifyListeners();
   }
 
-
- void addCategory(ExpenseCategory category) {
-    if (!_categories.any((cat) => cat.name == category.name)) {
-      _categories.add(category);
-      notifyListeners();
-    }
-  }
-
-  void deleteCategory(String id) {
+void deleteCategory(String id) {
     _categories.removeWhere((category) => category.id == id);
     notifyListeners();
   }

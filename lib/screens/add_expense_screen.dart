@@ -1,3 +1,4 @@
+import 'package:expense_manager/providers/expense_category_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:intl/intl.dart';
@@ -50,6 +51,7 @@ class AddExpenseScreen extends StatefulWidget {
   Widget build(BuildContext context) {
     // "Provider gives access to categories, tags, and expenses"
     final expenseProvider = Provider.of<ExpenseProvider>(context);
+    final expenseCategoryProvider = Provider.of<ExpenseCategoryProvider>(context);
 
     return Scaffold(
       appBar: AppBar(
@@ -73,12 +75,12 @@ class AddExpenseScreen extends StatefulWidget {
 
             Padding(
               padding: const EdgeInsets.only(bottom: 8.0),
-              child: buildCategoryDropdown(expenseProvider),
+              child: buildCategoryDropdown(expenseProvider, expenseCategoryProvider),
             ),
 
             Padding(
               padding: const EdgeInsets.only(bottom: 8.0),
-              child: buildTagDropdown(expenseProvider),
+              child: buildTagDropdown(expenseProvider, expenseCategoryProvider),
             ),
           ],
         ),
@@ -165,7 +167,7 @@ class AddExpenseScreen extends StatefulWidget {
     );
   }
 
-    Widget buildCategoryDropdown(ExpenseProvider provider) {
+    Widget buildCategoryDropdown(ExpenseProvider provider, ExpenseCategoryProvider provider2) {
     return DropdownButtonFormField<String>(
       initialValue: _selectedCategoryId,
       onChanged: (newValue) {
@@ -178,7 +180,7 @@ class AddExpenseScreen extends StatefulWidget {
                   _selectedCategoryId = newCategory.id;
                 });
 
-                provider.addCategory(newCategory);
+                provider2.addCategory(newCategory);
               },
             ),
           );
@@ -207,7 +209,7 @@ class AddExpenseScreen extends StatefulWidget {
     );
   }
   
-  Widget buildTagDropdown(ExpenseProvider provider) {
+  Widget buildTagDropdown(ExpenseProvider provider, ExpenseCategoryProvider provider2) {
     return DropdownButtonFormField<String>(
       initialValue: _selectedTagId,
       onChanged: (newValue) {

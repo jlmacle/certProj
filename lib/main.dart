@@ -1,3 +1,4 @@
+import 'package:expense_manager/providers/expense_category_provider.dart';
 import 'package:flutter/material.dart';
 
 import 'package:localstorage/localstorage.dart';
@@ -27,6 +28,7 @@ class MyApp extends StatelessWidget {
     return MultiProvider(
       providers: [
         ChangeNotifierProvider(create: (_) => ExpenseProvider(localStorage)),
+        ChangeNotifierProvider(create: (_) => ExpenseCategoryProvider(localStorage)),
       ],
       child: MaterialApp(
         title: 'Expense Tracker',

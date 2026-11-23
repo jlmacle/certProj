@@ -179,8 +179,8 @@ class AddExpenseScreen extends StatefulWidget {
                 setState(() {
                   _selectedCategoryId = newCategory.id;
                 });
-
                 provider2.addCategory(newCategory);
+                Navigator.pop(context);
               },
             ),
           );

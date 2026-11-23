@@ -5,6 +5,8 @@ import '../widgets/add_category_dialog.dart';
 
 // Example for CategoryManagementScreen
 class CategoryManagementScreen extends StatelessWidget {
+  const CategoryManagementScreen({super.key});
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(

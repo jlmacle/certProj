@@ -6,7 +6,7 @@ import '../models/expense_category.dart';
 class AddCategoryDialog extends StatefulWidget {
   final Function(ExpenseCategory) onAdd;
 
-  AddCategoryDialog({required this.onAdd});
+  const AddCategoryDialog({super.key, required this.onAdd});
 
   @override
   _AddCategoryDialogState createState() => _AddCategoryDialogState();

@@ -1,3 +1,4 @@
+import 'package:expense_manager/providers/expense_category_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import '../providers/expense_provider.dart';
@@ -38,7 +39,7 @@ class CategoryManagementScreen extends StatelessWidget {
             context: context,
             builder: (context) => AddCategoryDialog(
               onAdd: (newCategory) {
-                Provider.of<ExpenseProvider>(context, listen: false)
+                Provider.of<ExpenseCategoryProvider>(context, listen: false)
                     .addCategory(newCategory);
                 Navigator.pop(context); // Close the dialog
               },

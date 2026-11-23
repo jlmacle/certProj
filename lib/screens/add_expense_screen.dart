@@ -189,7 +189,7 @@ class AddExpenseScreen extends StatefulWidget {
         }
       },
 
-          items: provider.categories
+          items: provider2.categories
           .map<DropdownMenuItem<String>>((category) {
         return DropdownMenuItem(
           value: category.id,

@@ -1,4 +1,5 @@
 
+import 'package:expense_manager/providers/expense_category_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import '../providers/expense_provider.dart';
@@ -204,7 +205,7 @@ class _HomeScreenState extends State<HomeScreen>
   // home_screen.dart
  
   String getCategoryNameById(BuildContext context, String categoryId) {
-    var category = Provider.of<ExpenseProvider>(context, listen: false)
+    var category = Provider.of<ExpenseCategoryProvider>(context, listen: false)
         .categories
         .firstWhere((cat) => cat.id == categoryId,
             orElse: () => ExpenseCategory(id: '', name: 'Unknown', isDefault: false));

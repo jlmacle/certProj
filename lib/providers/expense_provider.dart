@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import '../models/expense.dart';
-import '../models/expense_category.dart';
 import '../models/tag.dart';
 import 'package:localstorage/localstorage.dart';
 import 'dart:convert';
@@ -10,14 +9,6 @@ class ExpenseProvider with ChangeNotifier {
   
   // List of expenses
   List<Expense> _expenses = [];
-  // List of categories
-  final List<ExpenseCategory> _categories = [
-    ExpenseCategory(id: '1', name: 'Food', isDefault: true),
-    ExpenseCategory(id: '2', name: 'Transport', isDefault: true),
-    ExpenseCategory(id: '3', name: 'Entertainment', isDefault: true),
-    ExpenseCategory(id: '4', name: 'Office', isDefault: true),
-    ExpenseCategory(id: '5', name: 'Gym', isDefault: true),
-  ];
   // List of tags
   final List<Tag> _tags = [
     Tag(id: '1', name: 'Breakfast'),
@@ -39,7 +30,6 @@ class ExpenseProvider with ChangeNotifier {
   
   // Getters
   List<Expense> get expenses => _expenses;
-  List<ExpenseCategory> get categories => _categories;
   List<Tag> get tags => _tags;
 
   ExpenseProvider(this.storage) {
@@ -87,11 +77,6 @@ class ExpenseProvider with ChangeNotifier {
   void removeExpense(String id) {
     _expenses.removeWhere((expense) => expense.id == id);
     _saveExpensesToStorage();
-    notifyListeners();
-  }
-
-void deleteCategory(String id) {
-    _categories.removeWhere((category) => category.id == id);
     notifyListeners();
   }
 

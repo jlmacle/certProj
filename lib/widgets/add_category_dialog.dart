@@ -2,7 +2,6 @@ import 'package:expense_manager/providers/expense_category_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import '../models/expense_category.dart';
-import '../providers/expense_provider.dart';
 
 class AddCategoryDialog extends StatefulWidget {
   final Function(ExpenseCategory) onAdd;
@@ -40,7 +39,7 @@ class _AddCategoryDialogState extends State<AddCategoryDialog> {
             Provider.of<ExpenseCategoryProvider>(context, listen: false)
                 .addCategory(newCategory);
             _controller.clear(); // Clear the input field
-            Navigator.of(context).pop();
+            // Navigator.of(context).pop();
           },
         ),
       ],
